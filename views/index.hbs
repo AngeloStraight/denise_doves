@@ -1,0 +1,24 @@
+  
+<div class="container">
+    {{# each birds }}
+        <div class="row">
+        {{# each this }}
+                <div class="col-sm">
+                    <div class="card mx-auto d-block" style="width: 18rem;">
+                        <img class="card-img-top rounded" src="{{ this.image }}" alt="{{ this.image }} Not found">
+                        <div class="card-body">
+                            <h5 class="card-title">Denise Dove</h5>
+                            <p class="card-text">This {{ this.name }} is {{ this.age }} years old and sex is {{ this.sex }}.</p>
+                            <div>
+                                <div class="price pull-right">${{ this.price }}</div>
+                                <a href="/add-to-cart/{{this._id}}" class="btn btn-primary">Buy</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+        {{/each}}
+        </div>
+    {{/each}}
+</div>
+   

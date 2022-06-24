@@ -1,0 +1,38 @@
+{
+  "name": "denise_doves",
+  "version": "1.0.0",
+  "description": "E-Commerce Web app were clients can purchase birds online.",
+  "main": "app.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node app",
+    "devStart": "cross-env NODE_ENV=development nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngeloStraight/denise_doves.git"
+  },
+  "author": "Angelo Straight",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AngeloStraight/denise_doves/issues"
+  },
+  "homepage": "https://github.com/AngeloStraight/denise_doves#readme",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.16"
+  },
+  "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.5",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "handlebars": "^4.7.7",
+    "mongoose": "^6.4.0",
+    "stripe": "^9.9.0"
+  }
+}
