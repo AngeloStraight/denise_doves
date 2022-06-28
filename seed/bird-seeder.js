@@ -8,58 +8,65 @@ connectDB()
 
 var birds = [
     new Bird({
-        name:"Dove",
+        name:"Dove_1",
         sex:"male",
         age:1,
-        price:150,
+        price:1,
+        price_id: "price_1LEFunGvrFCFNDycCtjQunEh",
         image: "/images/bird_on_tree.jpeg",
         createdAt: Date.now()
     }),
     new Bird({
-        name:"Dove",
+        name:"Dove_2",
         sex:"female",
         age:3,
-        price:150,
+        price:1,
+        price_id: "price_1LEFwiGvrFCFNDycEIyRn7cz",
         image: "/images/dove.jpg",
         createdAt: Date.now()
     }),
     new Bird({
-        name:"Dove",
+        name:"Dove_3",
         sex:"male",
         age:10,
-        price:150,
+        price:1,
+        price_id: "price_1LEG0yGvrFCFNDyczSOhuIcE",
         image: "/images/dove_mountain.jpeg",
         createdAt: Date.now()
     }),
     new Bird({
-        name:"Dove",
+        name:"Dove_4",
         sex:"male",
         age:1,
-        price:150,
+        price:1,
+        price_id: "price_1LEG4AGvrFCFNDycr7MGlMha",
         image: "/images/dove_on_cement.jpeg",
         createdAt: Date.now()
     }),
     new Bird({
-        name:"Dove",
+        name:"Dove_5",
         sex:"female",
         age:3,
-        price:150,
+        price:1,
+        price_id: "price_1LEG2dGvrFCFNDyce74CfuPj",
         image: "/images/dove_on_wood.jpeg",
         createdAt: Date.now()
     }),
     new Bird({
-        name:"Dove",
+        name:"Dove_6",
         sex:"male",
         age:10,
-        price:150,
+        price:1,
+        price_id: "price_1LEG5sGvrFCFNDycVzB8Y0wk",
         image: "/images/dove_in_tree.jpeg",
         createdAt: Date.now()
     }),
     new Bird({
-        name:"Dove",
+        name:"Dove_7",
         sex:"male",
         age:10,
-        price:150,
+        price:1,
+        price_id: "price_1LEG6UGvrFCFNDycUjlN6xqz",
         image: "/images/white_bird.jpeg",
         createdAt: Date.now()
     }),

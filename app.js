@@ -15,6 +15,7 @@ connectDB();
 // import routes
 var indexRouter = require('./routes/index');
 var checkoutRouter = require('./routes/checkout');
+var resultRouter = require('./routes/result');
 
 
 const MongoStore = require('connect-mongo');
@@ -25,6 +26,12 @@ const MongoStore = require('connect-mongo');
 app.engine('.hbs', engine({ handlebars: allowInsecurePrototypeAccess(Handlebars), defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 app.set('views', './views');
+
+Handlebars.registerHelper("if_zero", function(conditional, options) {
+    if (conditional) {
+      return options.fn(this);
+    }
+});
 
 // middleware
 app.use(bodyParser.json());
@@ -44,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/checkout', checkoutRouter);
+app.use('/result', resultRouter);
 
 app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), function(){

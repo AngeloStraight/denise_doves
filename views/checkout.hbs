@@ -8,7 +8,15 @@
     </div>
   </div>
   <form action="/checkout" method="POST">
+    {{# if products }}
+      {{# each products}}
+        <input type="hidden" id="price_id" name="price_id" value={{this.item.price_id}}>
+        <input type="hidden" id="prod_qty" name="prod_qty" value={{this.qty}}>
+      {{/each}}
+    {{/if}}
+    
     <button type="submit" id="checkout-button">Checkout</button>
   </form>
 </section>
+
   

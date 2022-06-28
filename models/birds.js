@@ -19,6 +19,10 @@ const BirdSchema = new mongoose.Schema({
         require: true
 
     },
+    price_id:{
+        type: String,
+        require: true
+    },
     image:{
         type: String
     },

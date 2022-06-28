@@ -1,24 +1,28 @@
-
-
 {{# if products }}
     <div class="row">
         <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
             <ul class="list-group">
                 {{# each products }}
-                <li class="list-group-item">
-                    <strong>{{ this.item.name }}</strong>
-                    <span class="badge bg-primary">${{ this.price }}</span>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                            Action
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Reduce by 1</a>
-                            <a class="dropdown-item" href="#">Remove All</a>
-                        </div>
-                    </div>
-                    <span class="badge bg-secondary">{{ this.qty }}</span>
-                </li>
+                  
+                    <li class="list-group-item">
+                        <strong>{{ this.item.name }}</strong>
+                        <img src="{{this.item.image}}" class="img-fluid rounded-circle">
+                        
+                        <form action="/add-to-cart/{{this.item._id}}" class="form-group float-left" method="POST">
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-circle-plus fa-2xl"></i></button>
+                        </form>
+
+                        <form action="/delete-from-cart/{{this.item._id}}" class="form-group float-right" method="POST">
+                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-circle-minus fa-2xl"></i></button>
+                        </form>
+
+                        {{!-- <i class="fa-solid fa-trash fa-2xl"></i> --}}
+                        
+                        
+                        <span class="badge bg-primary">Price: ${{ this.price }}</span>
+                        <span class="badge bg-secondary">Qty: {{ this.qty }}</span>
+                        </li>
+                   
                 {{/each}}
             </ul>
         </div>
@@ -32,7 +36,15 @@
 
     <div class="row">
         <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-            <a href="/checkout" type="button" class="btn btn-success">Checkout</a>
+            <form action="/checkout" method="POST">
+                {{# if products }}
+                    {{# each products}}
+                        <input type="hidden" id="price_id" name="price_id" value={{this.item.price_id}}>
+                        <input type="hidden" id="prod_qty" name="prod_qty" value={{this.qty}}>
+                    {{/each}}
+                {{/if}}
+                <button type="submit" id="checkout-button">Checkout</button>
+            </form>
         </div>
     </div>
 
