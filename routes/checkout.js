@@ -4,8 +4,7 @@ var Cart = require('../models/cart');
 const stripe = require('stripe')(process.env.STRIPE_SECRETE_KEY);
 
 
-const DOMAIN = 'http://localhost:3000';
-
+const DOMAIN = 'http://localhost:'.concat(process.env.PORT)
 
 router.get('/', function(req, res, next){
     var cart = new Cart(req.session.cart);
@@ -14,11 +13,23 @@ router.get('/', function(req, res, next){
 
 
 router.post('/', async (req, res) => {
-
+    var cart = new Cart(req.session.cart);
+    
     var price_arr = []
-    for (var i = 0; i < req.body.price_id.length; ++i){
-      price_arr.push({'price': req.body.price_id[i], 'quantity': parseInt(req.body.prod_qty[i])});
+
+    if (cart.totalQty < 2){
+      price_arr.push({'price': req.body.price_id, 'quantity': parseInt(req.body.prod_qty)});
+      
+    }else{
+      for (var i = 0; i < req.body.price_id.length; ++i){
+        if (parseInt(req.body.prod_qty[i]) > 0){
+          price_arr.push({'price': req.body.price_id[i], 'quantity': parseInt(req.body.prod_qty[i])});
+        }
+        
     }
+    }
+    
+
 
     const session = await stripe.checkout.sessions.create({
       line_items: price_arr,
@@ -28,7 +39,6 @@ router.post('/', async (req, res) => {
       automatic_tax: {enabled: true},
     });
 
-    console.log(session)
     res.redirect(303, session.url);
   });
 

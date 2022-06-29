@@ -5,6 +5,7 @@ router.get('/success', function(req, res, next){
     console.log("success get function");
     console.log(req.session)
     req.session.cart = {}
+    req.session = null
     res.render('success', {style: 'style.css', });
 });
 
