@@ -17,7 +17,9 @@ router.post('/', async (req, res) => {
     
     var price_arr = []
 
-    if (cart.totalQty < 2){
+    console.log(req.body.price_id);
+    console.log(req.body.prod_qty);
+    if (cart.totalQty < 2 || (cart.totalQty < req.body.price_id.length)){
       price_arr.push({'price': req.body.price_id, 'quantity': parseInt(req.body.prod_qty)});
       
     }else{
